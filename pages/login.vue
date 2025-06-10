@@ -1,6 +1,6 @@
 <template>
   <div class="login-page max-w-md mx-auto mt-10 p-6 border rounded">
-    <h1 class="text-2xl font-bold mb-4">Welcome to my app</h1>
+    <h1 class="text-2xl font-bold mb-4">Welcome to my app test</h1>
     <form @submit.prevent="login">
       <div class="mb-4">
         <label class="block mb-1">Email</label>
