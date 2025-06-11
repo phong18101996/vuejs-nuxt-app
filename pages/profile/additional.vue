@@ -1,14 +1,55 @@
 <template>
-  <div class="max-w-md mx-auto mt-10 p-6 border rounded shadow bg-white">
-    <h1 class="text-2xl font-bold mb-6">Additional Details</h1>
+  <div class="max-w-4xl mx-auto mt-0 p-6 relative">
+    <div
+      class="fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-40"
+      :class="{ '-translate-x-full': !drawerOpen, 'translate-x-0': drawerOpen }"
+    >
+      <div class="p-4 border-b font-bold text-lg">Menu</div>
+      <nav class="p-4 space-y-2">
+        <NuxtLink to="/profile/edit" class="block hover:underline text-blue-600"
+          >Edit Profile</NuxtLink
+        >
+        <button
+          @click="logout"
+          class="text-left text-red-600 hover:underline w-full"
+        >
+          Logout
+        </button>
+      </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div
+      v-if="drawerOpen"
+      @click="drawerOpen = false"
+      class="fixed inset-0 bg-gray-800 bg-opacity-20 z-30"
+    ></div>
+    <div class="flex items-center">
+      <button @click="drawerOpen = !drawerOpen" class="absolute right-5 z-50">
+        <svg
+          class="w-6 h-6 text-gray-700"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+      <h1 class="text-2xl font-bold mb-6 text-gray-700">Additional Details</h1>
+    </div>
 
     <form @submit.prevent="submit">
       <div class="mb-4">
-        <label class="block mb-1">Home Address*</label>
+        <label class="block mb-1 font-medium text-gray-700">Home Address*</label>
         <input
           v-model="form.address"
           type="text"
-          class="border [' p-2 w-full rounded', errors.address ? 'border-red-500' : 'border-gray-300']"
+          class="border p-2 w-full rounded  border-gray-500"
         />
         <p v-if="errors.address" class="text-red-500 text-sm mt-1">
           {{ errors.address }}
@@ -16,13 +57,11 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Country*</label>
+        <label class="block mb-1 font-medium text-gray-700">Country*</label>
         <input
-          v-model="form.country" type="text"
-          :class="[
-            'border p-2 w-full rounded',
-            errors.country ? 'border-red-500' : 'border-gray-300',
-          ]"
+          v-model="form.country"
+          type="text"
+          class="border p-2 w-full rounded  border-gray-500"
         />
 
         <p v-if="errors.country" class="text-red-500 text-sm mt-1">
@@ -31,11 +70,11 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Postal Code*</label>
+        <label class="block mb-1 font-medium text-gray-700">Postal Code*</label>
         <input
           v-model="form.postalCode"
           type="text"
-          class="border p-2 w-full rounded"
+          class="border p-2 w-full rounded  border-gray-500"
         />
         <p v-if="errors.postalCode" class="text-red-500 text-sm mt-1">
           {{ errors.postalCode }}
@@ -43,17 +82,17 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Date of Birth</label>
+        <label class="block mb-1 font-medium text-gray-700">Date of Birth</label>
         <input
           v-model="form.dob"
           type="date"
-          class="border p-2 w-full rounded"
+          class="border p-2 w-full rounded  border-gray-500"
         />
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Gender</label>
-        <select v-model="form.gender" class="border p-2 w-full rounded">
+        <label class="block mb-1 font-medium text-gray-700">Gender</label>
+        <select v-model="form.gender" class="border p-2 w-full rounded  border-gray-500 text-gray-700">
           <option disabled value="">Select Gender</option>
           <option>Male</option>
           <option>Female</option>
@@ -61,8 +100,8 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Marital Status</label>
-        <select v-model="form.maritalStatus" class="border p-2 w-full rounded">
+        <label class="block mb-1 font-medium text-gray-700">Marital Status</label>
+        <select v-model="form.maritalStatus" class="border p-2 w-full rounded  border-gray-500 text-gray-700">
           <option disabled value="">Select Status</option>
           <option>Single</option>
           <option>Married</option>
@@ -70,7 +109,7 @@
       </div>
 
       <button
-        class="bg-blue-600 text-white p-2 w-full rounded hover:bg-blue-700"
+        class="bg-blue-600 text-white p-2  rounded hover:bg-blue-700"
       >
         Save Additional Info
       </button>
@@ -83,10 +122,10 @@
 </template>
 
 <script setup>
+const drawerOpen = ref(false);
+const router = useRouter();
+const messageType = ref("");
 const currentUserEmail = useCookie("currentUser");
-{
-  /* const router = useRouter() */
-}
 
 const form = reactive({
   address: "",
@@ -106,6 +145,7 @@ const errors = reactive({
 const message = ref("");
 
 onMounted(async () => {
+  await nextTick();
   const { data } = await useFetch("/api/profile/get", {
     method: "POST",
     body: { email: currentUserEmail.value },
@@ -145,13 +185,31 @@ const submit = async () => {
 
   if (!error.value && data.value?.success) {
     showSuccessMessage("Additional information updated successfully!");
-    window.dispatchEvent(new CustomEvent('maritalStatusChanged', {
-    detail: form.maritalStatus
-  }));
-
+    window.dispatchEvent(
+      new CustomEvent("maritalStatusChanged", {
+        detail: form.maritalStatus,
+      })
+    );
   } else {
     message.value = data.value?.message || "Update failed.";
   }
 };
+const logout = async () => {
+  const { data, error } = await useFetch("/api/logout", {
+    method: "POST",
+  });
 
+  if (error.value || !data.value?.success) {
+    message.value = data.value?.message || "Logout failed. Please try again.";
+    messageType.value = "error";
+    return;
+  }
+
+  message.value = "Logout successful. Redirecting...";
+  messageType.value = "success";
+
+  setTimeout(() => {
+    router.push("/login");
+  }, 1000);
+};
 </script>

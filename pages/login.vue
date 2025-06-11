@@ -1,22 +1,22 @@
 <template>
-  <div class="login-page max-w-md mx-auto mt-10 p-6 border rounded">
-    <h1 class="text-2xl font-bold mb-4">Welcome to my app test</h1>
+  <div class="login-page max-w-lg mx-auto mt-10 p-6 ">
+    <h1 class="text-2xl font-bold mb-4 text-center text-gray-700">Welcome to my app</h1>
     <form @submit.prevent="login">
       <div class="mb-4">
-        <label class="block mb-1">Email</label>
-        <input v-model="email" type="email" class="border p-2 w-full rounded" @input="validateForm" />
+        <label class="block mb-1 text-gray-700 font-medium">Email</label>
+        <input v-model="email" type="email" class="border p-2 w-full rounded border-gray-500" @input="validateForm" />
         <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Password</label>
-        <input v-model="password" type="password" class="border p-2 w-full rounded" @input="validateForm" />
+        <label class="block mb-1 text-gray-700 font-medium">Password</label>
+        <input v-model="password" type="password" class="border p-2 w-full rounded border-gray-500" @input="validateForm" />
         <p v-if="errors.password" class="text-red-500 text-sm mt-1">{{ errors.password }}</p>
       </div>
 
       <div class="mb-4 flex items-center gap-2">
         <input id="remember" type="checkbox" v-model="rememberMe" />
-        <label for="remember">Keep me logged in</label>
+        <label for="remember text-gray-700 font-medium">Keep me logged in</label>
       </div>
 
       <p v-if="serverMessage" class="text-red-500 text-sm mb-2">{{ serverMessage }}</p>

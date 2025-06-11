@@ -1,6 +1,6 @@
 <template>
-    <div class="register-page max-w-md mx-auto mt-10 p-6 border rounded">
-        <h1 class="text-2xl font-bold mb-4">Register</h1>
+    <div class="register-page max-w-lg mx-auto mt-10 p-6">
+        <h1 class="text-2xl font-bold mb-4 text-center">Register</h1>
 
         <form @submit.prevent="submit">
             <div class="mb-4">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="mb-4">
-                <label class="block mb-1">User ID*</label>
+                <label class="block mb-1">Email*</label>
                 <input v-model="form.email" type="email" required class="border p-2 w-full rounded" />
             </div>
 
@@ -37,7 +37,7 @@
                 <input v-model="form.confirmPassword" type="password" required class="border p-2 w-full rounded" />
             </div>
             <p v-if="errorMessage" class="text-red-500 text-sm mb-4">{{ errorMessage }}</p>
-            <p v-if="successMessage" class="text-green-600 text-sm mb-4">{{ successMessage }}</p>
+            <p v-if="successMessage" class="text-green-600 text-md mb-4 text-center">{{ successMessage }}</p>
 
             <button type="submit" class="bg-blue-600 text-white p-2 w-full rounded hover:bg-blue-700">
                 Register
@@ -82,7 +82,7 @@ const submit = async () => {
     }
 
     successMessage.value = 'Registration successful!'
-    useCookie('currentUser').value = form.email
+    // useCookie('currentUser').value = form.email
     setTimeout(() => router.push('/login'), 1000)
 }
 </script>
