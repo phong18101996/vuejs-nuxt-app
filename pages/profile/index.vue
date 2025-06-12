@@ -67,10 +67,10 @@
 
       <p v-if="loading">Loading profile...</p>
       <template v-else-if="user">
-        <p class="mb-2 font-medium"><strong class="text-gray-800">Salutation:</strong> {{ user.salutation }}</p>
-        <p class="mb-2 font-medium"><strong class="text-gray-800">First Name:</strong> {{ user.firstname }}</p>
-        <p class="mb-2 font-medium"><strong class="text-gray-800">Last Name:</strong> {{ user.lastname }}</p>
-        <p class="mb-4 font-medium"><strong class="text-gray-800">Email Address:</strong> {{ user.email }}</p>
+        <p class="mb-2 font-medium"><strong class="text-gray-700">Salutation:</strong> {{ user.salutation }}</p>
+        <p class="mb-2 font-medium"><strong class="text-gray-700">First Name:</strong> {{ user.firstname }}</p>
+        <p class="mb-2 font-medium"><strong class="text-gray-700">Last Name:</strong> {{ user.lastname }}</p>
+        <p class="mb-4 font-medium"><strong class="text-gray-700">Email Address:</strong> {{ user.email }}</p>
       </template>
       <p v-else class="text-red-600">User not found or not logged in.</p>
     </div>

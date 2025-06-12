@@ -10,7 +10,6 @@ export default defineEventHandler(async (event) => {
     keepExtensions: true,
   })
 
-  // Parse form and wait until it's done
   const [fields, files]: any = await new Promise((resolve, reject) => {
     form.parse(event.node.req, async (err, fields, files) => {
       if (err) reject(err)
@@ -25,13 +24,11 @@ export default defineEventHandler(async (event) => {
 
   const avatarUrl = `/uploads/${path.basename(file.filepath)}`
 
-  // ✅ Lấy email từ cookie
   const email = getCookie(event, 'currentUser')
   if (!email) {
     return { success: false, message: 'User not authenticated' }
   }
 
-  // ✅ Lưu avatar_url vào user tương ứng
   const storage = useStorage()
   const users: any[] = (await storage.getItem('users')) || []
   const index = users.findIndex(u => u.email === email)

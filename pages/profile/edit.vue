@@ -46,11 +46,11 @@
 
     <!-- Drawer -->
     <!-- Avatar Upload -->
-    <div class="avatar w-[64px] h-[64px] relative group mb-6">
+    <div class="avatar w-[64px] h-[64px] relative group mb-6 flex items-center w-full">
       <img
         :src="previewUrl || '/uploads/avatar-default.svg'"
         alt="Avatar"
-        class="w-full h-full rounded-full object-cover"
+        class="w-[64px] h-[64px] rounded-full object-cover"
       />
       <input
         type="file"
@@ -59,12 +59,13 @@
         class="absolute inset-0 opacity-0 cursor-pointer"
         title="Change avatar"
       />
+      <p class="text-[12px] font-extralight ml-4 text-gray-700">Click on image to upload</p>
     </div>
 
     <form @submit.prevent="updateProfile">
       <div class="mb-4">
-        <label class="block mb-1">Salutation</label>
-        <select v-model="form.salutation" class="border p-2 w-full rounded">
+        <label class="block mb-1 text-gray-700">Salutation</label>
+        <select v-model="form.salutation" class="text-gray-700 border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none">
           <option value="">Select</option>
           <option value="Mr">Mr.</option>
           <option value="Ms">Ms.</option>
@@ -74,29 +75,29 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">First Name</label>
+        <label class="block mb-1 text-gray-700">First Name</label>
         <input
           v-model="form.firstname"
           type="text"
-          class="border p-2 w-full rounded"
+          class="text-gray-700 border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Last Name</label>
+        <label class="block mb-1 text-gray-700">Last Name</label>
         <input
           v-model="form.lastname"
           type="text"
-          class="border p-2 w-full rounded"
+          class="text-gray-700 border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1">Email address</label>
+        <label class="block mb-1 text-gray-700">Email address</label>
         <input
           v-model="form.email"
           type="email"
-          class="border p-2 w-full rounded"
+          class="text-gray-700 border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
 

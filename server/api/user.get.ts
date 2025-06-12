@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     return { success: false, message: 'User not logged in.' }
   }
 
-  const storage = useStorage() // Sử dụng bộ nhớ của Nuxt (ví dụ: fs, memory)
+  const storage = useStorage() 
   const users: any[] = (await storage.getItem('users')) || []
   const user = users.find(u => u.email === email)
 

@@ -4,14 +4,14 @@
       class="fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-40"
       :class="{ '-translate-x-full': !drawerOpen, 'translate-x-0': drawerOpen }"
     >
-      <div class="p-4 border-b font-bold text-lg">Menu</div>
+      <div class="p-4 border-b font-bold  text-lg text-gray-700">Menu</div>
       <nav class="p-4 space-y-2">
-        <NuxtLink to="/profile/edit" class="block hover:underline text-blue-600"
+        <NuxtLink to="/profile/edit" class="block hover:underline text-blue-600 "
           >Edit Profile</NuxtLink
         >
         <button
           @click="logout"
-          class="text-left text-red-600 hover:underline w-full"
+          class="text-left text-red-600 hover:underline w-full "
         >
           Logout
         </button>
@@ -40,16 +40,16 @@
           />
         </svg>
       </button>
-      <h1 class="text-2xl font-bold mb-6 text-gray-700">Personal Preferences</h1>
+      <h1 class="text-2xl font-bold  mb-6 text-gray-700">Personal Preferences</h1>
     </div>
 
     <form @submit.prevent="submit">
       <div class="mb-4">
-        <label class="block mb-1 font-medium text-gray-700">Hobbies and interests</label>
+        <label class="block mb-1 font-medium  text-gray-700">Hobbies and interests</label>
         <input
           v-model="form.hobbies"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
         <p v-if="errors.hobbies" class="text-red-500 text-sm mt-1">
           {{ errors.hobbies }}
@@ -57,11 +57,11 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 font-medium text-gray-700"> Favorite sport(s)</label>
+        <label class="block mb-1 font-medium  text-gray-700"> Favorite sport(s)</label>
         <input
           v-model="form.favorite"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
 
         <p v-if="errors.favorite" class="text-red-500 text-sm mt-1">
@@ -70,11 +70,11 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 font-medium text-gray-700">Preferred music genre(s)</label>
+        <label class="block mb-1 font-medium  text-gray-700">Preferred music genre(s)</label>
         <input
           v-model="form.music"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
         <p v-if="errors.music" class="text-red-500 text-sm mt-1">
           {{ errors.music }}
@@ -82,15 +82,15 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 font-medium text-gray-700">Preferred movie/TV show(s)</label>
+        <label class="block mb-1 font-medium  text-gray-700">Preferred movie/TV show(s)</label>
         <input
           v-model="form.movie"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
       <button
-        class="bg-blue-600 text-white p-2  rounded hover:bg-blue-700"
+        class="bg-blue-600 text-white p-2   rounded hover:bg-blue-700"
       >
         Personal Preferences
       </button>

@@ -49,7 +49,7 @@
         <input
           v-model="form.address"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
         <p v-if="errors.address" class="text-red-500 text-sm mt-1">
           {{ errors.address }}
@@ -61,7 +61,7 @@
         <input
           v-model="form.country"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
 
         <p v-if="errors.country" class="text-red-500 text-sm mt-1">
@@ -74,7 +74,7 @@
         <input
           v-model="form.postalCode"
           type="text"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
         <p v-if="errors.postalCode" class="text-red-500 text-sm mt-1">
           {{ errors.postalCode }}
@@ -86,13 +86,13 @@
         <input
           v-model="form.dob"
           type="date"
-          class="border p-2 w-full rounded  border-gray-500"
+          class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
 
       <div class="mb-4">
         <label class="block mb-1 font-medium text-gray-700">Gender</label>
-        <select v-model="form.gender" class="border p-2 w-full rounded  border-gray-500 text-gray-700">
+        <select v-model="form.gender" class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none text-gray-700">
           <option disabled value="">Select Gender</option>
           <option>Male</option>
           <option>Female</option>
@@ -101,7 +101,7 @@
 
       <div class="mb-4">
         <label class="block mb-1 font-medium text-gray-700">Marital Status</label>
-        <select v-model="form.maritalStatus" class="border p-2 w-full rounded  border-gray-500 text-gray-700">
+        <select v-model="form.maritalStatus" class="border p-2 w-full rounded  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none text-gray-700">
           <option disabled value="">Select Status</option>
           <option>Single</option>
           <option>Married</option>

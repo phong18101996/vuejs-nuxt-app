@@ -3,14 +3,14 @@
     <h1 class="text-2xl font-bold mb-4 text-center text-gray-700">Welcome to my app</h1>
     <form @submit.prevent="login">
       <div class="mb-4">
-        <label class="block mb-1 text-gray-700 font-medium">Email</label>
-        <input v-model="email" type="email" class="border p-2 w-full rounded border-gray-500" @input="validateForm" />
+        <label class="block mb-1 text-gray-700 font-medium">Email*</label>
+        <input v-model="email" type="email" class="border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none" @input="validateForm" />
         <p v-if="errors.email" class="text-red-500 text-sm mt-1">{{ errors.email }}</p>
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 text-gray-700 font-medium">Password</label>
-        <input v-model="password" type="password" class="border p-2 w-full rounded border-gray-500" @input="validateForm" />
+        <label class="block mb-1 text-gray-700 font-medium">Password*</label>
+        <input v-model="password" type="password" class="border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none" @input="validateForm" />
         <p v-if="errors.password" class="text-red-500 text-sm mt-1">{{ errors.password }}</p>
       </div>
 

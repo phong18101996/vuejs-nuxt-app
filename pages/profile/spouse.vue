@@ -4,9 +4,9 @@
       class="fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-40"
       :class="{ '-translate-x-full': !drawerOpen, 'translate-x-0': drawerOpen }"
     >
-      <div class="p-4 border-b font-bold text-lg">Menu</div>
+      <div class="p-4 border-b font-bold font-serif text-lg">Menu</div>
       <nav class="p-4 space-y-2">
-        <NuxtLink to="/profile/edit" class="block hover:underline text-blue-600"
+        <NuxtLink to="/profile/edit" class="block hover:underline text-blue-600 font-serif"
           >Edit Profile</NuxtLink
         >
         <button
@@ -40,13 +40,13 @@
           />
         </svg>
       </button>
-      <h1 class="text-2xl font-bold mb-6 text-gray-700">Spouse Details</h1>
+      <h1 class="text-2xl font-bold font-serif mb-6 text-gray-700">Spouse Details</h1>
     </div>
 
     <form @submit.prevent="submit">
       <div class="mb-4">
         <label class="block mb-1 text-gray-700">Salutation</label>
-        <select v-model="form.salutation" class="border p-2 w-full rounded text-gray-700">
+        <select v-model="form.salutation" class="border border-gray-500 p-2 font-serif w-full rounded text-gray-700 border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none">
           <option disabled value="">Select</option>
           <option>Mr.</option>
           <option>Ms.</option>
@@ -55,11 +55,11 @@
       </div>
 
       <div class="mb-4">
-        <label class="block mb-1 text-gray-700">First Name</label>
+        <label class="block mb-1 text-gray-700 font-serif">First Name</label>
         <input
           v-model="form.firstname"
           type="text"
-          class="border p-2 w-full rounded"
+          class="border p-2 w-full rounded border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
 
@@ -68,7 +68,7 @@
         <input
           v-model="form.lastname"
           type="text"
-          class="border p-2 w-full rounded focus:border focus:border-gray-700"
+          class="border p-2 w-full rounded focus:border  border-gray-500 focus:border-gray-600 focus-visible:border-gray-600 outline-none"
         />
       </div>
 
